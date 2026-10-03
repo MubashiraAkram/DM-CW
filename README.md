@@ -1,9 +1,3 @@
-Cake Shop Database Management System
-
-This repository contains the database design and implementation developed for the **Data Management 1 coursework** as part of the Diploma in Software Engineering.
-
-The project is based on a small cake shop that manages customers, employees, cakes, categories, orders, payments and branches.
-
 ## Project Overview
 
 The Cake Shop Database was designed to organize and manage the main business activities of a cake shop using a relational database.
@@ -139,4 +133,4 @@ The database could be expanded in the future by adding:
 
 ## Author
 
-Created as part of the Data Management 1 coursework for the Diploma in Software Engineering.
+This repository contains the database design and implementation developed by Mubashira Akram, Aleesha Ismail, Durangi Gomes and Thavinsa Perera for the **Data Management 1 Coursework** as part of the Diploma in Software Engineering.
