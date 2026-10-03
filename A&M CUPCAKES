@@ -4,6 +4,8 @@ GO
 USE AMCUPCAKES;
 GO
 
+--Create Tables associated with each entity
+
 CREATE TABLE Customer (
     CustomerID VARCHAR(10) PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
@@ -22,7 +24,13 @@ CREATE TABLE Employee (
 );
 GO
 
-CREATE TABLE EMPLOYEE
+--additional table created as employee phone number is a multivalued attribute.
+CREATE TABLE EmployeePhone (
+    EmployeePhone VARCHAR (15),
+    EmployeeID VARCHAR (10) NOT NULL,
+    PRIMARY KEY (EmployeeID,EmployeePhone),
+    FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID)
+);
 
 CREATE TABLE Category (
     CategoryID VARCHAR(10) PRIMARY KEY,
@@ -90,6 +98,8 @@ CREATE TABLE Payment (
 );
 GO
 
+--Insert values into all 9 tables created above
+
 INSERT INTO Customer VALUES
 ('C001','Amaya Perera','0771234567','amaya@gmail.com'),
 ('C002','Nimal Silva','0712345678','nimal@gmail.com'),
@@ -114,6 +124,21 @@ INSERT INTO Employee VALUES
 ('E008','Hansani Perera','0778888888','Decorator',68000.00),
 ('E009','Supun Silva','0779999999','Delivery Staff',49000.00),
 ('E010','Thilini Fernando','0770000000','Decorator',67000.00);
+GO
+
+INSERT INTO EmployeePhone (EmployeeID, EmployeePhone) VALUES
+('E001','0771607465'),
+('E002','0743247465'),
+('E003','0771652445'),
+('E003','0112378578'),
+('E004','0719556610'),
+('E005','0771607465'),
+('E006','0743416065'),
+('E007','0771607465'),
+('E007','0112485495'),
+('E008','0777286644'),
+('E009','0777234465'),
+('E010','0729458905');
 GO
 
 INSERT INTO Category VALUES
