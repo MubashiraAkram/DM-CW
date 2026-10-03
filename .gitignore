@@ -1,0 +1,37 @@
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# macOS system files
+.DS_Store
+
+# Visual Studio / editor files
+.vs/
+.vscode/
+*.user
+*.suo
+
+# SQL Server database and backup files
+*.mdf
+*.ldf
+*.ndf
+*.bak
+*.trn
+
+# Microsoft Office temporary files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+~$*.doc
+~$*.xls
+~$*.ppt
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Environment / secret files
+.env
+.env.*
