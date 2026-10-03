@@ -1,0 +1,41 @@
+CREATE ROLE CakeShopManager;
+GO
+
+CREATE ROLE CakeShopStaff;
+GO
+
+CREATE ROLE CakeShopViewer;
+GO
+
+GRANT SELECT,INSERT,UPDATE,DELETE ON SCHEMA::dbo TO CakeShopManager;
+GO
+
+GRANT SELECT,INSERT,UPDATE ON SCHEMA::dbo TO CakeShopStaff;
+GO
+
+GRANT SELECT ON SCHEMA::dbo TO CakeShopViewer;
+GO
+
+CREATE USER ManagerUser WITHOUT LOGIN;
+GO
+
+CREATE USER StaffUser WITHOUT LOGIN;
+GO
+
+CREATE USER ViewerUser WITHOUT LOGIN;
+GO
+
+ALTER ROLE CakeShopManager ADD MEMBER ManagerUser;
+GO
+
+ALTER ROLE CakeShopStaff ADD MEMBER StaffUser;
+GO
+
+ALTER ROLE CakeShopViewer ADD MEMBER ViewerUser;
+GO
+
+EXECUTE AS USER = 'CakeShopViewer';
+
+SELECT * FROM Customer;
+
+REVERT;
