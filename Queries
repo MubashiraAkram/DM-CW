@@ -1,0 +1,53 @@
+SELECT * FROM Payment;
+
+SELECT EmployeeID,Name,PhoneNumber,JobRole,Salary
+FROM Employee
+WHERE JobRole='Baker';
+
+SELECT OrderID,OrderDate,TotalAmt,OrderStatus
+FROM [Order]
+WHERE OrderStatus='Pending';
+
+SELECT CakeID,CakeName,Size,Price
+FROM Cake
+WHERE Price>3000;
+
+SELECT PaymentID,Amount,PaymentMethod,OrderID
+FROM Payment
+WHERE PaymentMethod='Card';
+
+SELECT e.EmployeeID,e.Name AS EmployeeName,COUNT(o.OrderID) AS TotalOrders
+FROM Employee e
+JOIN [Order] o ON e.EmployeeID=o.EmployeeID
+GROUP BY e.EmployeeID,e.Name
+HAVING COUNT(o.OrderID)>1
+ORDER BY TotalOrders DESC;
+
+SELECT c.CustomerID,c.Name AS CustomerName,COUNT(o.OrderID) AS NumberOfOrders
+FROM Customer c
+JOIN [Order] o ON c.CustomerID=o.CustomerID
+GROUP BY c.CustomerID,c.Name
+HAVING COUNT(o.OrderID)>1
+ORDER BY NumberOfOrders DESC;
+
+SELECT cat.CategoryID,cat.CategoryName,SUM(oi.Quantity) AS TotalCakesSold
+FROM Category cat
+JOIN Cake c ON cat.CategoryID=c.CategoryID
+JOIN OrderItem oi ON c.CakeID=oi.CakeID
+GROUP BY cat.CategoryID,cat.CategoryName
+HAVING SUM(oi.Quantity)>1
+ORDER BY TotalCakesSold DESC;
+
+SELECT c.CakeID,c.CakeName,SUM(oi.Quantity*oi.UnitPrice) AS TotalSales
+FROM Cake c
+JOIN OrderItem oi ON c.CakeID=oi.CakeID
+GROUP BY c.CakeID,c.CakeName
+HAVING SUM(oi.Quantity*oi.UnitPrice)>5000
+ORDER BY TotalSales DESC;
+
+SELECT b.BranchID,b.BranchName,COUNT(o.OrderID) AS TotalOrders,SUM(o.TotalAmt) AS TotalSales
+FROM Branch b
+JOIN [Order] o ON b.BranchID=o.BranchID
+GROUP BY b.BranchID,b.BranchName
+HAVING SUM(o.TotalAmt)>10000
+ORDER BY TotalSales DESC;
